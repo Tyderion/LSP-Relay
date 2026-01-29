@@ -3,5 +3,5 @@
 	"auto_complete_selector": "- comment",
 	"initializationOptions": {},
 	"settings": {},
-	"selector": "source.graphql"
+	"selector": "source.js | source.jsx | source.ts | source.tsx"
 }

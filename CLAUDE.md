@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LSP-graphql is a Sublime Text plugin that provides GraphQL language support via the Language Server Protocol. It wraps the `graphql-language-service-server` from the GraphiQL project.
+LSP-relay is a Sublime Text plugin that provides Relay language server support via the Language Server Protocol. It wraps the Relay compiler's built-in LSP to provide diagnostics, autocomplete, and other features for Relay GraphQL fragments in JavaScript/TypeScript files.
 
 ## Architecture
 
 Two-component system:
 - **Python plugin** (`plugin.py`): Sublime Text integration using `NpmClientHandler` from `lsp_utils`
-- **Node.js language server** (`language-server/`): Thin wrapper around `graphql-language-service-server` that communicates via stdio
+- **Node.js wrapper** (`language-server/`): Platform-detecting wrapper that spawns the native Relay compiler binary with the `lsp` argument
 
-The plugin manages the Node.js server lifecycle automatically via `lsp_utils`.
+The Relay compiler ships platform-specific native binaries at `node_modules/relay-compiler/<platform>/relay`. The wrapper script detects the current platform and spawns the correct binary.
 
 ## Commands
 
@@ -30,9 +30,9 @@ pycodestyle plugin.py --max-line-length=120
 ## Key Files
 
 - `plugin.py` - Plugin entry point, extends `NpmClientHandler`
-- `language-server/start-server.js` - Server entry point, starts `graphql-language-service-server` with stdio method
-- `language-server/package.json` - Node.js dependencies (`graphql`, `graphql-language-service-cli`)
-- `LSP-graphql.sublime-settings` - Default plugin settings, selector targets `source.graphql`
+- `language-server/start-server.js` - Wrapper that spawns the platform-specific relay binary with `lsp` argument
+- `language-server/package.json` - Node.js dependencies (`relay-compiler`)
+- `LSP-relay.sublime-settings` - Default plugin settings, selector targets JS/TS files
 - `dependencies.json` - Declares Sublime package dependencies (`lsp_utils`, `sublime_lib`)
 
 ## Code Style

@@ -1,17 +1,28 @@
-# LSP-graphql
+# LSP-relay
 
-GraphQL support for Sublime's LSP plugin.
+Relay language server support for Sublime Text's LSP plugin.
 
-Uses [graphql-language-service-server](https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-server) to provide diagnostics, autocomplete suggestions, definitions and other features for GraphQL files or blocks. See linked repository for more information.
+Uses the [Relay Compiler](https://relay.dev/docs/guides/compiler/) language server to provide diagnostics, autocomplete suggestions, and other features for Relay GraphQL fragments in JavaScript and TypeScript files.
 
-* Install [LSP](https://packagecontrol.io/packages/LSP), [GraphQL Sublime Package](https://packagecontrol.io/packages/GraphQL) and `LSP-graphql` from Package Control.
+## Installation
+
+* Install [LSP](https://packagecontrol.io/packages/LSP) and `LSP-relay` from Package Control.
 * Restart Sublime.
 
-### Project configuration
+## Project configuration
 
-Server requires that your project includes a configuration file that defines the `schema` URL at least. Refer to [server configuration file](https://github.com/graphql/graphiql/tree/main/packages/graphql-language-service-server#graphql-configuration-file) for more details.
+The Relay language server requires a `relay.config.json` (or `relay.config.js`) in your project root with at minimum:
 
+```json
+{
+  "src": "./src",
+  "schema": "./schema.graphql",
+  "language": "typescript"
+}
+```
 
-### Configuration
+Refer to the [Relay Compiler Configuration](https://relay.dev/docs/guides/compiler/) documentation for more details.
 
-Open configuration file using command palette with `Preferences: LSP-graphql Settings` command or opening it from the Sublime menu (`Preferences > Package Settings > LSP > Servers > LSP-graphql`).
+## Configuration
+
+Open configuration file using command palette with `Preferences: LSP-relay Settings` command or opening it from the Sublime menu (`Preferences > Package Settings > LSP > Servers > LSP-relay`).
