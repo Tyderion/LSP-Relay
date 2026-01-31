@@ -7,7 +7,10 @@ if (relayBinary === null) {
     process.exit(1);
 }
 
-const child = spawn(relayBinary, ['lsp'], {
+// Pass through any command line arguments (e.g., --output=quiet-with-errors, config path)
+const args = ['lsp', ...process.argv.slice(2)];
+
+const child = spawn(relayBinary, args, {
     stdio: 'inherit'
 });
 
