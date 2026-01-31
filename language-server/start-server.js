@@ -1,28 +1,11 @@
 const { spawn } = require('child_process');
-const path = require('path');
-const os = require('os');
 
-function getPlatformDir() {
-    const platform = os.platform();
-    const arch = os.arch();
+const relayBinary = require('relay-compiler');
 
-    if (platform === 'darwin') {
-        return arch === 'arm64' ? 'macos-arm64' : 'macos-x64';
-    } else if (platform === 'linux') {
-        return 'linux-x64';
-    } else if (platform === 'win32') {
-        return 'win32-x64';
-    }
-    throw new Error(`Unsupported platform: ${platform}-${arch}`);
+if (relayBinary === null) {
+    process.stderr.write(`Platform "${process.platform} (${process.arch})" not supported.\n`);
+    process.exit(1);
 }
-
-const relayBinary = path.join(
-    __dirname,
-    'node_modules',
-    'relay-compiler',
-    getPlatformDir(),
-    process.platform === 'win32' ? 'relay.exe' : 'relay'
-);
 
 const child = spawn(relayBinary, ['lsp'], {
     stdio: 'inherit'

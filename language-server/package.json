@@ -4,6 +4,6 @@
   "license": "MIT",
   "version": "1.0.0",
   "dependencies": {
-    "relay-compiler": "^18.0.0"
+    "relay-compiler": "^20.1.1"
   }
 }
