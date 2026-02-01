@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LSP-relay is a Sublime Text plugin that provides Relay language server support via the Language Server Protocol. It wraps the Relay compiler's built-in LSP to provide diagnostics, autocomplete, and other features for Relay GraphQL fragments in JavaScript/TypeScript files.
+LSP-relay is a Sublime Text plugin that provides an LSP client for the Relay compiler's built-in language server. It enables diagnostics, autocomplete, go-to-definition, and other IDE features for Relay projects in JavaScript/TypeScript files.
 
 ## Architecture
 
