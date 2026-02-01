@@ -1,3 +1,7 @@
+/**
+ * Wrapper script that spawns the Relay compiler's language server.
+ * The relay-compiler package exports the path to its platform-specific binary.
+ */
 const { spawn } = require('child_process');
 
 const relayBinary = require('relay-compiler');
@@ -19,6 +23,9 @@ child.on('error', (err) => {
     process.exit(1);
 });
 
-child.on('exit', (code) => {
+child.on('exit', (code, signal) => {
+    if (signal) {
+        process.exit(1);
+    }
     process.exit(code || 0);
 });
