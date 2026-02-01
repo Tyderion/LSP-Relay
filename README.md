@@ -33,7 +33,7 @@ Available settings:
 
 | Setting | Description | Default |
 |---------|-------------|---------|
-| `pathToConfig` | Absolute path to a relay config file (`relay.config.json`, `.js`, `.cjs`, or `.mjs`). If not specified, the compiler searches for config in `package.json` or `relay.config.*` files. | `""` |
+| `pathToConfig` | Path to a relay config file, absolute or relative to project root (`relay.config.json`, `.js`, `.cjs`, or `.mjs`). If not specified, the compiler searches for config in `package.json` or `relay.config.*` files. | `""` |
 | `lspOutputLevel` | LSP output verbosity level. Options: `debug`, `quiet`, `quiet-with-errors`, `verbose` | `"quiet-with-errors"` |
 | `useVSCodeRelaySettings` | When enabled, loads `pathToConfig` from `.vscode/settings.json` if not set above. | `false` |
 

@@ -3,10 +3,10 @@
 	"initializationOptions": {},
 	"settings": {},
 	"selector": "source.js | source.jsx | source.ts | source.tsx",
-	// Absolute path to a relay config file.
+	// Path to a relay config file (absolute or relative to project root).
 	// Supports: relay.config.json, relay.config.js, relay.config.cjs, relay.config.mjs
 	// If not specified, the compiler searches for config in package.json or relay.config.* files.
-	// Example: "/Users/you/project/relay.config.js"
+	// Example: "./relay.config.js" or "/Users/you/project/relay.config.js"
 	"pathToConfig": "",
 	// LSP output verbosity level.
 	// Possible values: "debug", "quiet", "quiet-with-errors", "verbose"
